@@ -57,16 +57,17 @@ struct Wrapper
 };
 
 template<typename T>
-void variadicHelper(T argOne)
+void variadicHelper(T first)
 {
-
+    Wrapper<T> w(std::move(first));
 }
 
 template<typename T, typename ... Args>
-void variadicHelper(T argOne, Args ... args)
+void variadicHelper(T first, Args ... args)
 {
-    //variadicHelper(Args)
-    Wrapper<float> test(2.5);
+
+    variadicHelper(args...);
+
 }
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
@@ -85,6 +86,7 @@ void variadicHelper(T argOne, Args ... args)
 int main()
 {
     variadicHelper( 3, std::string("burgers"), 2.5, Point{3.f, 0.14f} );
+    //variadicHelper(2);
 }
 
 
