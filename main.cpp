@@ -48,6 +48,7 @@ struct Wrapper
     }
 };
 
+variadicHelper
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
