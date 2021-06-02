@@ -69,17 +69,17 @@ void Wrapper<Point>::print()
 }
 
 template<typename T>
-void variadicHelper(T&& arg)
+void variadicHelper(T arg)
 {
-    Wrapper<T> w(std::forward<T>(arg));
+    Wrapper<T> w(std::move(arg));
     w.print();
 }
 
 template<typename T, typename ... Args>
-void variadicHelper(T&& first, Args&& ... args)
+void variadicHelper(T first, Args ... args)
 {
-    variadicHelper(std::forward<T>(first));
-    variadicHelper(std::forward<Args>(args)...);
+    variadicHelper(first);
+    variadicHelper(args...);
 }
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
