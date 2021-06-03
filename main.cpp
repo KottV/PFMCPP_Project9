@@ -17,6 +17,8 @@ Make the following program work, which makes use of Variadic templates and Recur
 #include <typeinfo>
 #include <utility>
 
+void variadicHelper();
+
 struct Point
 {
     Point(float _x, float _y) : x(_x), y(_y) { }
@@ -76,8 +78,6 @@ void variadicHelper(T&& arg)
 }
 */
 
-void variadicHelper() {}
-
 template<typename T, typename ... Args>
 void variadicHelper(T&& first, Args&& ... args)
 {
@@ -86,6 +86,8 @@ void variadicHelper(T&& first, Args&& ... args)
     
     variadicHelper(std::forward<Args>(args)...);
 }
+
+void variadicHelper() {}
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
