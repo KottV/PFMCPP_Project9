@@ -41,13 +41,7 @@ struct Point
 private:
     float x{0}, y{0};
 };
-/*
-std::ostream& operator<< (std::ostream &out, const Point &point)
-{
-    out << point.toString();
-    return out;
-}
-*/
+
 template<typename Type>
 struct Wrapper
 {
@@ -69,14 +63,6 @@ void Wrapper<Point>::print()
 {
     std::cout << "Wrapper::print(" << val.toString() <<")" << std::endl;
 }
-/*
-template<typename T>
-void variadicHelper(T&& arg)
-{
-    Wrapper<T> w(std::forward<T>(arg));
-    w.print();
-}
-*/
 
 template<typename T, typename ... Args>
 void variadicHelper(T&& first, Args&& ... args)
@@ -107,5 +93,3 @@ int main()
 {
     variadicHelper( 3, std::string("burgers"), 2.5, Point{3.f, 0.14f} );
 }
-
-
