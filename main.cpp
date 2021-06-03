@@ -76,6 +76,8 @@ void variadicHelper(T&& arg)
 }
 */
 
+void variadicHelper() {}
+
 template<typename T, typename ... Args>
 void variadicHelper(T&& first, Args&& ... args)
 {
@@ -84,8 +86,6 @@ void variadicHelper(T&& first, Args&& ... args)
     
     variadicHelper(std::forward<Args>(args)...);
 }
-
-void variadicHelper() {}
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
