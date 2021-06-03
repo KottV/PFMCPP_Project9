@@ -67,20 +67,26 @@ void Wrapper<Point>::print()
 {
     std::cout << "Wrapper::print(" << val.toString() <<")" << std::endl;
 }
-
+/*
 template<typename T>
 void variadicHelper(T&& arg)
 {
     Wrapper<T> w(std::forward<T>(arg));
     w.print();
 }
+*/
 
 template<typename T, typename ... Args>
 void variadicHelper(T&& first, Args&& ... args)
 {
-    variadicHelper(std::forward<T>(first));
+    Wrapper<T> w(std::forward<T>(first));
+    w.print();
+    
     variadicHelper(std::forward<Args>(args)...);
 }
+
+void variadicHelper() {}
+
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
